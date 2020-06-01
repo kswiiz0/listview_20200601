@@ -12,6 +12,7 @@
         >
 
         <TextView
+            android:id="@+id/nameAndAgeTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="이름(??세)"
@@ -20,6 +21,7 @@
             />
 
         <TextView
+            android:id="@+id/genderTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="성별"
