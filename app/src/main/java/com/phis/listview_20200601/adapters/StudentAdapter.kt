@@ -21,11 +21,10 @@ class StudentAdapter(context: Context, resId: Int, list: List<Student>) :
 
         if ( tempRow == null){
             tempRow = inf.inflate(R.layout.student_list_view, null)
-
         }
 
         val row = tempRow!!
-        return super.getView(position, convertView, parent)
+        return row
     }
 
 
