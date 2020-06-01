@@ -39,12 +39,15 @@ class StudentAdapter(context: Context, resId: Int, list: List<Student>) :
             genderTxt.text = "여성"
         }
 
-        val thisYear = 2020
-        val birthYear = data.birthYear
+//        val thisYear = 2020
+//        val birthYear = data.birthYear
+//        nameAndAgeTxt.text = "${data.name}(${thisYear-birthYear+1}세)"
 
-        nameAndAgeTxt.text = "${data.name}(${thisYear-birthYear+1}세)"
 
+        val cal = Calendar.getInstance()
+        val thisYear = cal.get(Calendar.YEAR).toInt()
 
+        nameAndAgeTxt.text = "${data.name}(${data.getAge(thisYear)}세)"
 
         return row
     }
