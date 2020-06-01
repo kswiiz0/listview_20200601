@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.phis.listview_20200601.R
 import com.phis.listview_20200601.datas.Student
+import java.util.*
 
 class StudentAdapter(context: Context, resId: Int, list: List<Student>) :
     ArrayAdapter<Student>(context, resId, list) {
@@ -25,12 +26,24 @@ class StudentAdapter(context: Context, resId: Int, list: List<Student>) :
         }
 
         val row = tempRow!!
+
+
         val nameAndAgeTxt = row.findViewById<TextView>(R.id.nameAndAgeTxt)
         val genderTxt = row.findViewById<TextView>(R.id.genderTxt)
 
-
         val data = mList.get(position)
-        nameAndAgeTxt.text = data.name
+
+        if ( data.isMale ){
+            genderTxt.text = "남성"
+        }else{
+            genderTxt.text = "여성"
+        }
+
+        val thisYear = 2020
+        val birthYear = data.birthYear
+
+        nameAndAgeTxt.text = "${data.name}(${thisYear-birthYear+1}세)"
+
 
 
         return row
