@@ -1,8 +1,9 @@
 package com.phis.listview_20200601
 
-import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.phis.listview_20200601.adapters.StudentAdapter
 import com.phis.listview_20200601.datas.Student
 import kotlinx.android.synthetic.main.activity_main.*
@@ -38,19 +39,18 @@ class MainActivity : BaseActivity() {
 //            val clickedStudent = students[position]
 //            Toast.makeText(mContext, "${clickedStudent.name}를 삭제", Toast.LENGTH_SHORT).show()
 
+            val alert = AlertDialog.Builder(mContext)
+            alert.setTitle("삭제 확인")
+            alert.setMessage("정말 이 학생을 삭제하시겠습니까?")
+            alert.setPositiveButton("확인", DialogInterface.OnClickListener { dialog, which ->
+                //아이테 삭제
+                students.removeAt(position)
+                //리스트뷰(어뎁터)에게 데이터셋의 변경상태를 전달한다.
+                studentAdapter.notifyDataSetChanged()
+            })
 
-
-
-
-            //아이테 삭제
-            students.removeAt(position)
-
-
-
-
-
-            //리스트뷰(어뎁터)에게 데이터셋의 변경상태를 전달한다.
-            studentAdapter.notifyDataSetChanged()
+            alert.setNegativeButton("취소", null)
+            alert.show()
 
             return@setOnItemLongClickListener true
         }
