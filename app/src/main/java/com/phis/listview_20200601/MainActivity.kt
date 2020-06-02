@@ -1,5 +1,6 @@
 package com.phis.listview_20200601
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.widget.Toast
 import com.phis.listview_20200601.adapters.StudentAdapter
@@ -23,11 +24,37 @@ class MainActivity : BaseActivity() {
     override fun setupEvents() {
 
         listViewStudents.setOnItemClickListener { parent, view, position, id ->
+            //아래와 동일한 코드 val clickedStudent = students[position]
             val clickedStudent = students.get(position)
             Toast.makeText(mContext, clickedStudent.name, Toast.LENGTH_SHORT).show()
 
 
         }
+
+        /*Return을 true로 하면 LongClick 전용으로 사용되고,
+         *        false로 할 경우 일반 Click로 같이 실행된다.
+        */
+        listViewStudents.setOnItemLongClickListener { parent, view, position, id ->
+//            val clickedStudent = students[position]
+//            Toast.makeText(mContext, "${clickedStudent.name}를 삭제", Toast.LENGTH_SHORT).show()
+
+
+
+
+
+            //아이테 삭제
+            students.removeAt(position)
+
+
+
+
+
+            //리스트뷰(어뎁터)에게 데이터셋의 변경상태를 전달한다.
+            studentAdapter.notifyDataSetChanged()
+
+            return@setOnItemLongClickListener true
+        }
+
 
 
     }
