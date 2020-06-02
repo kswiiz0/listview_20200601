@@ -47,7 +47,7 @@ class StudentAdapter(context: Context, resId: Int, list: List<Student>) :
         val cal = Calendar.getInstance()
         val thisYear = cal.get(Calendar.YEAR).toInt()
 
-        nameAndAgeTxt.text = "${data.name}(${data.getAge(thisYear)}세)"
+        nameAndAgeTxt.text = "${data.name}(${data.getKoreanAge(thisYear)}세)"
 
         return row
     }
